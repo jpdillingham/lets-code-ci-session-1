@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 
 // create a dictionary to store our counters
-var counts = { current: 0.0, previous: 0.0 }
+var counts = { current: 0, previous: 0 }
 
 // update the current count with a new value after
 // updating the previous count
