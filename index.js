@@ -28,7 +28,7 @@ app.use('/fonts', express.static('node_modules/bootstrap/fonts'));
 // serve static files from the 'public' folder
 app.use('/', express.static('public'));
 
-// set up api routes
+// set up api
 app.get('/api/count', function (request, response) {
   response.send(JSON.stringify(counts));
 });
