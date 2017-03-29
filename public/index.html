@@ -12,7 +12,7 @@
       function execute(verb, count) {
         var url = window.location.href + "api/" + verb;
 
-        if (!!count) {
+        if (count) {
           url = url + "?count=" + count;
         }
 
