@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 
-// create a dictionary to store our counters
+// create an object to store our counters
 var counts = { current: 0, previous: 0 }
 
 // update the current count with a new value after
@@ -28,7 +28,7 @@ app.use('/fonts', express.static('node_modules/bootstrap/fonts'));
 // serve static files from the 'public' folder
 app.use('/', express.static('public'));
 
-// set up api routes
+// set up api
 app.get('/api/count', function (request, response) {
   response.send(JSON.stringify(counts));
 });
@@ -63,3 +63,5 @@ app.get('/api/set', function(request, response) {
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });
+
+module.exports = app;
