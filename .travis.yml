@@ -5,5 +5,6 @@ addons:
   code_climate:
     repo_token: 00ec73c8466db4176c9ad8f2f1740625afd6f797207f71378fb3dbbe2dc3af7b
 after_success:
+  - istanbul cover _mocha -- -R spec ./tests/*.js
   - npm install -g codeclimate-test-reporter
   - codeclimate-test-reporter < lcov.info
