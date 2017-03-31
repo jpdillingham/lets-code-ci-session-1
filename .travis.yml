@@ -8,12 +8,10 @@ addons:
     repo_token: 00ec73c8466db4176c9ad8f2f1740625afd6f797207f71378fb3dbbe2dc3af7b
 
 before_script:
-  - npm install -g istanbul
-  - npm install -g mocha
   - npm install -g codeclimate-test-reporter
   - npm install -g codecov
 
 after_success:
-  - istanbul cover --no-default-excludes ./node_modules/mocha/bin/mocha tests/*.js
+  - istanbul cover ./node_modules/mocha/bin/_mocha tests/*.js --reporter lcovonly -- -R spec
   - codeclimate-test-reporter < ./coverage/lcov.info
   - codecov
