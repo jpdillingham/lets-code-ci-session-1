@@ -1,10 +1,19 @@
 language: node_js
+
 node_js:
   - "iojs"
+
 addons:
   code_climate:
     repo_token: 00ec73c8466db4176c9ad8f2f1740625afd6f797207f71378fb3dbbe2dc3af7b
-after_success:
-  - istanbul cover _mocha -- -R spec ./tests/*.js
+
+before_script:
+  - npm install -g istanbul
+  - npm install -g mocha
   - npm install -g codeclimate-test-reporter
-  - codeclimate-test-reporter < lcov.info
+  - npm install -g codecov
+
+after_success:
+  - istanbul cover --no-default-excludes ./node_modules/mocha/bin/mocha tests/*.js
+  - codeclimate-test-reporter < ./coverage/lcov.info
+  - codecov
