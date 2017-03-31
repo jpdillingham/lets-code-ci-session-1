@@ -13,5 +13,5 @@ before_script:
   - npm install -g codeclimate-test-reporter
 
 after_success:
-  - istanbul cover --no-default-excludes ./node_modules/mocha/bin/mocha tests
+  - istanbul cover --no-default-excludes ./node_modules/mocha/bin/mocha tests/*.js
   - codeclimate-test-reporter < ./coverage/lcov.info
