@@ -53,8 +53,8 @@ app.get('/api/halve', function(request, response) {
   response.send(currentValue());
 });
 
-app.post('/api/set', function(request, response) {
-  updateCount(parseInt(request.data.count))
+app.get('/api/set', function(request, response) {
+  updateCount(parseInt(request.query.count))
   response.send(currentValue());
 });
 

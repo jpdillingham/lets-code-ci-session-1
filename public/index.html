@@ -23,7 +23,7 @@
             update(result.current, "black");
           },
           error: function(result) {
-            if (result.status === 404) {
+            if (result.status == 500) {
               update("Enter a Valid Number!", "red");
             }
             else {
