@@ -54,8 +54,13 @@ app.get('/api/halve', function(request, response) {
 });
 
 app.get('/api/set', function(request, response) {
-  updateCount(parseInt(request.query.count));
-  response.send(currentValue());
+  try {
+    updateCount(parseInt(request.query.count))
+    response.send(currentValue());
+  }
+  catch(err) {
+    response.status(404).send(err)
+  }
 });
 
 // start the server on port 3000
