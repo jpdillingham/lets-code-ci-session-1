@@ -4,7 +4,7 @@
   "description": "Let's Code: Continuous Integration (Session 1)",
   "main": "app.js",
   "scripts": {
-    "test": "mocha tests/*.js"
+    "test": "./node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha tests/*.js"
   },
   "author": "JP Dillingham",
   "license": "MIT",

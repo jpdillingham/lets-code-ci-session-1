@@ -1,5 +1,6 @@
 var server = require('supertest');
 var should = require('chai').should();
+var expect = require('chai').expect();
 var http = require('http');
 var app = require('../app');
 
@@ -206,6 +207,20 @@ describe("API set", function() {
       }
 
       result.status.should.equal(200);
+
+      done();
+    })
+  })
+
+  it ("should throw an eror given a string", function(done) {
+    server(app)
+    .get('/app/set?count=string')
+    .end(function(error, result) {
+      if (error) {
+        done(error);
+      }
+
+      result.status.should.equal(404);
 
       done();
     })
