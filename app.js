@@ -54,7 +54,7 @@ app.get('/api/halve', function(request, response) {
 });
 
 app.get('/api/set', function(request, response) {
-  updateCount(request.query.count);
+  updateCount(parseInt(request.query.count));
   response.send(currentValue());
 });
 

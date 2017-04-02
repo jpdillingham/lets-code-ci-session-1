@@ -27,6 +27,14 @@ describe("API count", function() {
 describe("API add", function() {
   it ("should complete successfully" , function(done) {
     server(app)
+    .get('/api/set?count=0')
+    .end(function(error, result) {
+      if (error) {
+        done(error);
+      }
+    });
+
+    server(app)
     .get('/api/add')
     .end(function(error, result) {
       if (error) {
@@ -62,6 +70,14 @@ describe("API add", function() {
 describe("API subtract", function() {
   it ("should complete successfully" , function(done) {
     server(app)
+    .get('/api/set?count=1')
+    .end(function(error, result) {
+      if (error) {
+        done(error);
+      }
+    });
+
+    server(app)
     .get('/api/subtract')
     .end(function(error, result) {
       if (error) {
@@ -91,5 +107,125 @@ describe("API subtract", function() {
 
       done();
     })
+  })
+})
+
+describe("API double", function() {
+  it ("should complete successfully" , function(done) {
+    server(app)
+    .get('/api/set?count=5')
+    .end(function(error, result) {
+      if (error) {
+        done(error);
+      }
+    });
+
+    server(app)
+    .get('/api/double')
+    .end(function(error, result) {
+      if (error) {
+        done(error);
+      }
+
+      result.status.should.equal(200);
+
+      done();
+    })
+  })
+
+  it ("should have doubled count from 5 to 10" , function(done) {
+    server(app)
+    .get('/api/count')
+    .end(function(error, result) {
+      if (error) {
+        done(error);
+      }
+
+      result.status.should.equal(200);
+
+      var count = JSON.parse(result.text);
+
+      count.current.should.equal(10);
+      count.previous.should.equal(5);
+
+      done();
+    })
+  })
+})
+
+describe("API halve", function() {
+  it ("should complete successfully" , function(done) {
+    server(app)
+    .get('/api/set?count=10')
+    .end(function(error, result) {
+      if (error) {
+        done(error);
+      }
+    });
+
+    server(app)
+    .get('/api/halve')
+    .end(function(error, result) {
+      if (error) {
+        done(error);
+      }
+
+      result.status.should.equal(200);
+
+      done();
+    })
+  })
+
+  it ("should have halved count from 10 to 5" , function(done) {
+    server(app)
+    .get('/api/count')
+    .end(function(error, result) {
+      if (error) {
+        done(error);
+      }
+
+      result.status.should.equal(200);
+
+      var count = JSON.parse(result.text);
+
+      count.current.should.equal(5);
+      count.previous.should.equal(10);
+
+      done();
+    })
+  })
+})
+
+describe("API set", function() {
+  it ("should complete successfully" , function(done) {
+    server(app)
+    .get('/api/set?count=42')
+    .end(function(error, result) {
+      if (error) {
+        done(error);
+      }
+
+      result.status.should.equal(200);
+
+      done();
+    })
+  })
+
+  it ("should have set count to 42" , function(done) {
+    server(app)
+    .get('/api/count')
+    .end(function(error, result) {
+      if (error) {
+        done(error);
+      }
+
+      result.status.should.equal(200);
+
+      var count = JSON.parse(result.text);
+
+      count.current.should.equal(42);
+
+      done();
+    });
   })
 })
