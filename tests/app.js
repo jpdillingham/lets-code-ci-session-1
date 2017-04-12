@@ -68,49 +68,6 @@ describe("API add", function() {
   })
 })
 
-describe("API subtract", function() {
-  it ("should complete successfully" , function(done) {
-    server(app)
-    .get('/api/set?count=1')
-    .end(function(error, result) {
-      if (error) {
-        done(error);
-      }
-    });
-
-    server(app)
-    .get('/api/subtract')
-    .end(function(error, result) {
-      if (error) {
-        done(error);
-      }
-
-      result.status.should.equal(200);
-
-      done();
-    })
-  })
-
-  it ("should have decremented count by 1" , function(done) {
-    server(app)
-    .get('/api/count')
-    .end(function(error, result) {
-      if (error) {
-        done(error);
-      }
-
-      result.status.should.equal(200);
-
-      var count = JSON.parse(result.text);
-
-      count.current.should.equal(0);
-      count.previous.should.equal(1);
-
-      done();
-    })
-  })
-})
-
 describe("API double", function() {
   it ("should complete successfully" , function(done) {
     server(app)
@@ -238,7 +195,7 @@ describe("API set", function() {
 
       var count = JSON.parse(result.text);
 
-      count.current.should.equal(42);
+      count.current.should.equal(1);
 
       done();
     });
