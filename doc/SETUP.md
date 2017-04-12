@@ -14,17 +14,9 @@ Next, we need to install [Git](https://git-scm.com/) so that we can work with re
 
 Finally, we need to install [Node.js](https://nodejs.org/en/) to run our application.  Doing so will also install [npm](https://www.npmjs.com/), a package manager which we will use to simplify installation of code packages as we build our application.  Again, take all default options when prompted by the installer.
 
-# 2. Account Setup
-
-Now that our environment is set up, we need to create accounts with the websites which will provide hosting for our repository, as well as the integrations we'll use.  
-
-## 2.1 Create a GitHub.com Account
+## 2 Create a GitHub.com Account
 
 GitHub is a service that provides online storage for your Git repositories.  To create an account, navigate to [GitHub](https://github.com/) and create an account, if you don't already have one.  There's nothing tricky about signing up, however you will need to verify your email address before we can link to other services.
-
-## 2.4 Link Your GitHub Account to Codecov
-
-
 
 # 3. Repository Setup
 
