@@ -30,7 +30,7 @@ app.use('/', express.static('public'));
 
 // set up api
 app.get('/api/count', function (request, response) {
-  response.send(JSON.stringify(counts));
+  response.send(currentValue());
 });
 
 app.get('/api/add', function(request,response) {
